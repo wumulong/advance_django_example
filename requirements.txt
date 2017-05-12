@@ -17,6 +17,7 @@ python-postmark==0.4.12
 # API
 djangorestframework==3.6.2
 djangorestframework-jwt==1.10.0
+django-ratelimit==1.0.1
 
 # debug-toolbar
 django-debug-toolbar==1.7
@@ -49,12 +50,12 @@ maya==0.1.8
 arrow==0.10.0
 pendulum==1.2.0
 timeago==1.0.7
+mistune==0.7.4
 
 
-django-ratelimit==1.0.1
 django-taggit==0.22.1
 django-filter==1.0.2
-
+django-tables2==1.6.1
 
 
 git+https://github.com/maethor/avatar-generator.git

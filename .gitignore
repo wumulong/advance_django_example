@@ -90,5 +90,7 @@ docs/_build/
 target/
 
 
-media/
 conf/production/
+media/
+logs
+

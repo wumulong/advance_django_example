@@ -1,0 +1,64 @@
+{% extends "partials/base.html" %}
+
+{% block pagetilte %}
+  <title>进阶 Django 教程 | 应用</title>
+{% endblock %}
+
+{% block content %}
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="container mt50 ml40 mr40">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-12">
+          <h2>任务队列和定时任务</h2>
+          <p>使用 Celery, django-rq, django-corntab 构建任务队列、定时任务应用，获取 Upslash 最新图片、监控服务器最新监控信息、商品信息爬虫</p>
+          <p><a class="btn btn-secondary" href="/job_queue/" role="button">任务队列和搜索 &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>搜索</h2>
+          <p>使用 django-elasticsearch 构建商品属性搜索应用</p>
+          <p><a class="btn btn-secondary" href="/django_elasticsearch/" role="button">搜索 &raquo;</a></p>
+        </div>
+        <div class="col-md-12">
+          <h2>RESTful API</h2>
+          <p>Django REST framework 结合 JWT 验证、限流器，构建高性能 API 应用。</p>
+          <p><a class="btn btn-secondary" href="/restful_api/" role="button">RESTful API &raquo;</a></p>
+       </div>
+        <div class="col-md-12">
+          <h2>其他进阶常用库</h2>
+          <p>其他 Django 进阶库示例：图片处理、打标签、发送模板邮件、信息流、开发辅助工具等。</p>
+          <p><a class="btn btn-secondary" href="/others/" role="button">其他进阶库 &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h2>任务队列和搜索</h2>
+          <p>使用 Celery 和 rq 构建任务队列、定时任务应用。 结合爬虫及 ElasticSearch 构建复杂商品属性搜索应用。</p>
+          <p><a class="btn btn-secondary" href="/job_queue_and_search/" role="button">任务队列和搜索 &raquo;</a></p>
+        </div>
+        <div class="col-md-12">
+          <h2>RESTful API</h2>
+          <p>Django REST framework 结合 JWT 验证、限流器，构建高性能 API 应用。</p>
+          <p><a class="btn btn-secondary" href="/restful_api/" role="button">RESTful API &raquo;</a></p>
+       </div>
+        <div class="col-md-12">
+          <h2>其他进阶常用库</h2>
+          <p>其他 Django 进阶库示例：图片处理、打标签、发送模板邮件、信息流、开发辅助工具等。</p>
+          <p><a class="btn btn-secondary" href="/others/" role="button">其他进阶库 &raquo;</a></p>
+        </div>
+      </div>
+
+    </div> <!-- /container -->
+
+{% endblock %}
+
+
+{% block pagejs %}
+  <script>
+    NProgress.start()
+
+    NProgress.done()
+  </script>
+{% endblock %}
+

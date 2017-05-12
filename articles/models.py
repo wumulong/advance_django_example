@@ -3,13 +3,10 @@ from django.utils import timezone
 
 # Create your models here.
 
-import architect
-
-@architect.install('partition', type='range', subtype='date', constraint='month', column='publish_time')
-class Article(models.Model):
-    title = models.CharField(max_length=100)
+class Articles(models.Model):
+    title = models.CharField(max_length=50)
     category = models.CharField(max_length=50)
-    publish_time = models.DateTimeField(default=timezone.now)
+    publish_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
     content = models.TextField()
 

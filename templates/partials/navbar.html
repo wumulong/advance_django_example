@@ -1,21 +1,20 @@
-<nav class="navbar navbar-inverse bg-inverse navbar-toggleable-md">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand ml20" href="/">
-    <span class="mr5"><i class="fa fa-terminal" aria-hidden="true" style=""></i></span> advance_django_example
+    <span class="mr5"><i class="fa fa-terminal" aria-hidden="true" style=""></i></span> 进阶 Django 教程
   </a>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li {% if title == 'app' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
-        <a href="/app/" class="nav-link">App</a>
+      <li {% if title == 'apps' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a href="/apps/" class="nav-link">Apps</a>
       </li>
       <li {% if title == 'faq' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
         <a href="/faq/" class="nav-link">FAQ</a>
       </li>
     </ul>
-
 
     {% if user.is_authenticated %}
       <ul class="navbar-nav">
