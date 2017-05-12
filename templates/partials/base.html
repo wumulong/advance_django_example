@@ -3,13 +3,13 @@
   <head>
     <title>
       {% block title %}
-        advance_django_example
+        进阶 Django 教程
       {% endblock %}
     </title>
     <meta charset="utf-8">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="进阶 Django 中文教程，" />
+    <meta name="keywords" content="Django, Web, Web Development, Django Development, Django 中文教程, 进阶 Django 教程" />
+    <meta name="author" content="Chen Jian(lsdvincent|lsdlab)" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -38,11 +38,7 @@
     {% block content %}
     {% endblock %}
 
-    <hr>
-    <div class="container pt10">
-        {% include "partials/footer.html" %}
-    </div>
-
+    {% include "partials/footer.html" %}
 
     {% block pagejs %}
     {% endblock %}
