@@ -1,0 +1,36 @@
+site_name: Django 进阶教程
+site_description: 'Django 进阶教程'
+site_author: '陈坚'
+site_url: 'https://advance_django_example.com'
+theme: material
+
+
+# Repository
+repo_name: 'lsdlab/advance_django_example'
+repo_url: 'https://github.com/lsdlab/advance_django_example'
+
+
+# Copyright
+copyright: 'Copyright &copy; 2017 Chen Jian'
+
+
+# Options
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/lsdlab'
+    - type: 'twitter'
+      link: 'https://twitter.com/lsdvincent'
+
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite(guess_lang=false)
+  - toc(permalink=true)
+
+# Pages
+pages:
+    - Home: index.md
+    - About: about.md
+
