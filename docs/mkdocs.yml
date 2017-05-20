@@ -1,7 +1,7 @@
 site_name: Django 进阶教程
 site_description: 'Django 进阶教程'
 site_author: '陈坚'
-site_url: 'https://advance_django_example.com'
+# site_url: 'https://advance_django_example.com'
 theme: material
 
 
@@ -31,6 +31,9 @@ markdown_extensions:
 
 # Pages
 pages:
-    - Home: index.md
-    - About: about.md
+    - 介绍: introduction.md
+    - 第一章 - 任务队列 Celery: chapter1.md
+    - 第二章 - 另一个任务队列 django-rq: chapter1.md
+    - 第一章 - 简单定时任务 django-crontab: chapter1.md
+    - 第一章 - 复杂搜索 django-elasticsearch: chapter1.md
 

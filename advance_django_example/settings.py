@@ -12,15 +12,21 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'p&1_8(mw3m%ep$($vvkckf9+=i_iy)fgqamoclyfao%9s+9w5-'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,9 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'article',
     'user',
     'captcha',
     'imagekit',
+    'taggit',
     'rest_framework',
     'django_extensions',
     'debug_toolbar',
@@ -120,9 +128,9 @@ WSGI_APPLICATION = 'advance_django_example.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'advance_django_example_development',
-        'USER': '',
-        'PASSWORD': ''
+        'NAME': os.environ.get("DATABASE_NAME"),
+        'USER': os.environ.get("DATABASE_USER"),
+        'PASSWORD':os.environ.get("DATABASE_PASSWORD")
     }
 }
 
@@ -188,11 +196,31 @@ AUTH_USER_MODEL = 'user.User'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
+# logging settings
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, "logs", 'advance_django_example.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 
 # celery settings
-BROKER_URL = 'redis://localhost:6379/0'
+BROKER_URL = os.environ.get("REDIS_URL")
 # redis result backend
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = os.environ.get("REDIS_URL")
 # database result backend, use django-celery-results
 # CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -203,15 +231,15 @@ CELERY_TIMEZONE = 'Asia/Shanghai'
 # django-rq settings
 RQ_QUEUES = {
     'default': {
-        'URL': 'redis://localhost:6379/0',
+        'URL': os.environ.get("REDIS_URL"),
         'DEFAULT_TIMEOUT': 300,
     },
     'high': {
-        'URL': 'redis://localhost:6379/0',
+        'URL': os.environ.get("REDIS_URL"),
         'DEFAULT_TIMEOUT': 300,
     },
     'low': {
-        'URL': 'redis://localhost:6379/0',
+        'URL': os.environ.get("REDIS_URL"),
         'DEFAULT_TIMEOUT': 300,
     }
 }
@@ -220,7 +248,7 @@ RQ_QUEUES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://localhost:6379/0",
+        "LOCATION": os.environ.get("REDIS_URL"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -228,3 +256,4 @@ CACHES = {
 }
 
 REDIS_TIMEOUT = 24 * 60 * 60
+

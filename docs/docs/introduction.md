@@ -17,10 +17,10 @@ pip install git+https://github.com/maethor/avatar-generator.git
 
 ## Django 常用库
 
-* 任务队列 Celery 定时任务 远程执行。每天获取 Upslash 最新图片，定时获取服务器监控信息，商品信息爬虫
-* 另一个任务队列 django-rq
+* Celery 任务队列 定时任务 远程执行。每天获取 Upslash 最新图片，定时获取服务器监控信息，商品信息爬虫
+* django-rq 另一个任务队列
 * 简单定时任务 django-crontab
-* 属性搜索 django-elasticsearch
+* 商品属性搜索应用 django-elasticsearch
 * RESTful API django-restframework + JWT API 限流 django-ratelimit
 * django-simple-captcha and django-imagekit 验证码和图片处理
 * 用户模块 API 及页面功能
@@ -29,6 +29,7 @@ pip install git+https://github.com/maethor/avatar-generator.git
 * django-taggit 打标签
 * django-activity-stream 信息流
 * 前端结合 webpack django-webpack-loader
+
 * built-in admin panel django-flat-responsive
 * 接入 sentry
 

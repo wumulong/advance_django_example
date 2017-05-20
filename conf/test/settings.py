@@ -44,9 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'article',
     'user',
     'captcha',
     'imagekit',
+    'taggit',
     'rest_framework',
     'django_extensions',
     'debug_toolbar',
@@ -213,7 +215,6 @@ LOGGING = {
         },
     },
 }
-
 
 
 # celery settings
