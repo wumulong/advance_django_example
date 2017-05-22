@@ -14,6 +14,7 @@ from user.serializers import UserSerializer
 
 
 # create a function to resolve email to username
+# HTML views
 def get_user(email):
     try:
         return User.objects.get(email=email.lower())
@@ -29,15 +30,15 @@ def login_view(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        username = get_user(email)
-        if username:
-            user = authenticate(username=username, password=password)
+        user = get_user(email)
+        if user:
+            authenticate_user = authenticate(username=user.username, password=password)
         else:
             messages.warning(request, '无此用户，请注册使用！')
             return HttpResponseRedirect('/signup/')
 
-        if user is not None:
-            login(request, user)
+        if authenticate_user is not None:
+            login(request, authenticate_user)
             messages.success(request, '登录成功！')
             return HttpResponseRedirect('/')
         else:
@@ -148,6 +149,7 @@ def password_edit_view(request):
 #         return User.objects.get(pk=self.request.user.pk)
 
 
+# API views
 @api_view(['GET', 'POST'])
 def users(request):
     if request.method == 'GET':
@@ -182,14 +184,3 @@ def check_user(request, nickname):
         else:
             serializer = UserSerializer(user_detail[0])
             return Response(serializer.data)
-
-@api_view(['POST'])
-def create_weixin_user(request):
-    if request.method == 'POST':
-        user = User(email=request.POST.get('weixin_nickName') + "@weixinclient.com",
-            weixin_nickName=request.POST.get('weixin_nickName'),
-            weixin_avatarUrl=request.POST.get('weixin_avatarUrl'))
-        user.set_password(request.POST.get('email'))
-        user.save()
-        serializer = UserSerializer(user)
-        return Response(serializer.data)

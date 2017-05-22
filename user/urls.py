@@ -20,5 +20,4 @@ urlpatterns = [
     url(r'^api/v1/users/$', views.users, name='users'),
     url(r'^api/v1/users/(?P<pk>[0-9]+)/$', views.user_detail, name='user_detail'),
     url(r'^api/v1/check_user/(?P<nickname>\w+)/$', views.check_user, name='check_user'),
-    url(r'^api/v1/create_weixin_user/$', views.create_weixin_user, name='create_weixin_user'),
 ]

@@ -91,6 +91,8 @@ target/
 
 
 conf/production/
+advance_django_example/.env
+conf/test/.env
 media/
 logs
 

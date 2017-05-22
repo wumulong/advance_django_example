@@ -10,7 +10,7 @@
       <h4>个人信息</h4>
     </div>
 
-    <form class="offset-md-2 col-md-10" action="/profile/edit/" method="post">
+    <form class="offset-md-2 col-md-10" action="/user/profile/edit/" method="post">
       {% csrf_token %}
       <div class="form-group row">
         <label for="email" class="col-2 col-form-label">邮箱</label>
@@ -63,7 +63,7 @@
       <h4>更改密码</h4>
     </div>
 
-    <form class="offset-md-2 col-md-10" action="/password/edit/" method="post">
+    <form class="offset-md-2 col-md-10" action="/user/password/edit/" method="post">
       {% csrf_token %}
       <div class="form-group row">
         <label for="old-password" class="col-2 col-form-label">旧密码</label>
@@ -110,7 +110,7 @@
           <button class="btn btn-danger" id="delete-account-btn"><i class="fa fa-trash"></i>&nbsp
             删除帐号
           </button>
-          <form id="delete-account-form" action="/profile/delete/" method="post">
+          <form id="delete-account-form" action="/user/profile/delete/" method="post">
             {% csrf_token %}
           </form>
         </div>

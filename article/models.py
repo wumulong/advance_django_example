@@ -2,6 +2,9 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 
+from taggit.managers import TaggableManager
+
+
 # Create your models here.
 
 class Article(models.Model):
@@ -10,6 +13,7 @@ class Article(models.Model):
     publish_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
     content = models.TextField()
+    tags = TaggableManager()
 
     def __str__(self):
       return self.title

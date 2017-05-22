@@ -1,0 +1,18 @@
+## 安装 requirements.txt 中的第三方库
+
+因为这个教程用到了挺多东西，但都非常容易在本地下载了跑起来，首先是数据库用的是 PostgreSQL，任务队列用到了 Redis，其他的话可能 requirements.txt 中的某些库在不同环境下可能会出现问题，在 macOS 上使用 Python3 都能安装成功，我就不在这里详细写了。
+
+```shell
+# clone code and install pip packages
+git clone https://github.com/lsdlab/advance_django_example
+cd advence_django_example
+pip install -r requirements.txt
+```
+
+
+
+## 启动本地开发服务
+
+项目在 conf 文件夹下将 prodution 和 test 环境的配置进行了区分，使用 python-dotenv 读取 .env 文件，获得项目的 secret_key、数据库用户名密码等等。
+
+启动了本地的 PostgreSQL 和 Redis 服务后，手动新建一个数据库，在 `conf/test`文件夹下新建 .env 文件，按照 env.sample 中的
