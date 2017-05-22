@@ -37,11 +37,12 @@ pages:
     - 第二章 - 另一个任务队列 django-rq: chapter2.md
     - 第三章 - 简单定时任务 django-crontab: chapter3.md
     - 第四章 - 复杂搜索 django-elasticsearch: chapter4.md
-    - 第五章 - 本地开发辅助 django-debug-toolbar 和 django-extensions: chapter5.md
-    - 第六章 - 打标签 django-taggit: chapter6.md
-    - 第七章 - 信息流 django-activity-stream: chapter7.md
-    - 第八章 - 前端结合 Webpack django-webpack-loader: chapter8.md
-    - 第九章 - 接入 Sentry: chapter9.md
-    - 第十章 - 部署: chapter10.md
-    - 第十一章 - 实战应用: chapter11.md
+    - 第五章 - RESTFul API: chapter5.md
+    - 第六章 - 本地开发辅助 django-debug-toolbar 和 django-extensions: chapter6.md
+    - 第七章 - 打标签 django-taggit: chapter7.md
+    - 第八章 - 信息流 django-activity-stream: chapter8.md
+    - 第九章 - 前端结合 Webpack django-webpack-loader: chapter9.md
+    - 第十章 - 接入 Sentry: chapter10.md
+    - 第十一章 - 部署: chapter11.md
+    - 第十二章 - 实战应用: chapter12.md
 

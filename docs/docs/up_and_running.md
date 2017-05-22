@@ -13,6 +13,6 @@ pip install -r requirements.txt
 
 ## 启动本地开发服务
 
-项目在 conf 文件夹下将 prodution 和 test 环境的配置进行了区分，使用 python-dotenv 读取 .env 文件，获得项目的 secret_key、数据库用户名密码等等。
+项目在 conf 文件夹下将 prodution 和 development 环境的配置进行了区分，使用 python-dotenv 读取 .env 文件，获得项目的 secret_key、数据库用户名密码等等。
 
-启动了本地的 PostgreSQL 和 Redis 服务后，手动新建一个数据库，在 `conf/test`文件夹下新建 .env 文件，按照 env.sample 中的
+启动了本地的 PostgreSQL 和 Redis 服务后，手动新建一个数据库，进入项目文件夹下，运行 `python manage.py migrate --settings=conf.development.settings`，进行数据库迁移，然后运行 `python manage.py runserver 0.0.0.0:8000 --settings=conf.development.settings`，浏览器打开 `localhost:8000` 就能看到首页了。
