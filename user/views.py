@@ -1,16 +1,19 @@
+import logging
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .forms import SignupForm, AvatarForm
-from .models import User
-from django.http import JsonResponse
+from user.forms import SignupForm, AvatarForm
+from user.models import User
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from user.serializers import UserSerializer
+
+logger = logging.getLogger(__name__)
 
 
 # create a function to resolve email to username
@@ -123,7 +126,7 @@ def password_edit_view(request):
 
         if new_password != confirm_new_password:
             messages.warning(request, '两次输入密码不一致，请重新输入！')
-            return HttpResponseRedirect('/profile/')
+            return HttpResponseRedirect('/user/profile/')
         else:
             user.set_password(new_password)
             logout(request)
@@ -131,7 +134,7 @@ def password_edit_view(request):
             return HttpResponseRedirect('/login/')
     else:
         messages.warning(request, '请输入正确的当前密码！')
-        return HttpResponseRedirect('/profile/')
+        return HttpResponseRedirect('/user/profile/')
 
 
 # @login_required
@@ -159,6 +162,10 @@ def users(request):
     elif request.method == 'POST':
         user = User(email=request.POST.get('email'))
         user.set_password(request.POST.get('email'))
+        user.nickname = request.POST.get('nickname')
+        user.bio = request.POST.get('bio')
+        user.url = request.POST.get('url')
+        user.location = request.POST.get('location')
         user.save()
         serializer = UserSerializer(user)
         return Response(serializer.data)
@@ -166,19 +173,39 @@ def users(request):
 
 @api_view(['GET'])
 def user_detail(request, pk):
-    if request.method == 'GET':
-        user_detail = User.objects.filter(id=pk)
-        if not user_detail:
-            return JsonResponse({})
-        else:
-            serializer = UserSerializer(user_detail[0])
-            return Response(serializer.data)
+    try:
+        user_detail = User.objects.get(id=pk)
+    except ObjectDoesNotExist as e:
+        user_detail = None
+        logger.error(' ============ ObjectDoesNotExist ============')
+        logger.error(e)
+    if not user_detail:
+        user_detail = User.objects.none()
+    else:
+        if request.method == 'POST':
+            user_detail.nickname = request.POST.get('nickname')
+            user_detail.bio = request.POST.get('bio')
+            user_detail.url = request.POST.get('url')
+            user_detail.location = request.POST.get('location')
+            user_detail.save()
+    serializer = UserSerializer(user_detail)
+    serializer_data = serializer.data
+    return Response(serializer_data)
 
 
 @api_view(['GET'])
 def check_user(request, nickname):
     if request.method == 'GET':
-        user_detail = User.objects.filter(nickname=nickname)
+        try:
+            pass
+        except ObjectDoesNotExist as e:
+            logger.error(' ============ ObjectDoesNotExist ============')
+            logger.error(e)
+        else:
+            pass
+        finally:
+            pass
+        user_detail = User.objects.get(nickname=nickname)
         if not user_detail:
             return JsonResponse({})
         else:

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'captcha',
     'imagekit',
     'taggit',
+    'taggit_serializer',
     'rest_framework',
     'django_extensions',
     'debug_toolbar',

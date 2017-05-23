@@ -16,7 +16,8 @@
       <div class="container">
         <h1 class="display-3">进阶 Django 教程</h1>
         <p></p>
-        <p><a class="btn btn-primary btn-lg" href="/apps/" role="button">开始学习 &raquo;</a></p>
+        <!-- <p><a class="btn btn-primary btn-lg" href="" role="button">开始学习 &raquo;</a></p> -->
+        <p><a class="btn btn-primary btn-lg" href="http://localhost:8001" role="button">开始学习 &raquo;</a></p>
       </div>
     </div>
 
@@ -24,19 +25,19 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>任务队列和搜索</h2>
-          <p>使用 Celery 和 rq 构建任务队列、定时任务应用。结合爬虫及 ElasticSearch 构建复杂商品属性搜索应用。</p>
-          <p><a class="btn btn-secondary" href="/job_queue_and_search/" role="button">任务队列和搜索 &raquo;</a></p>
+          <h2>任务队列和定时任务</h2>
+          <p>使用 Celery, django-rq, django-corntab 构建任务队列、定时任务应用</p>
+          <p><a class="btn btn-secondary" href="/job_queue/" role="button">任务队列 &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>搜索</h2>
+          <p>使用 django-elasticsearch 构建复杂搜索应用</p>
+          <p><a class="btn btn-secondary" href="/search/" role="button">搜索 &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>RESTful API</h2>
           <p>Django REST framework 结合 JWT 验证、限流器，构建高性能 API 应用。</p>
           <p><a class="btn btn-secondary" href="/restful_api/" role="button">RESTful API &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>其他进阶常用库</h2>
-          <p>其他 Django 进阶库示例：图片处理、打标签、发送模板邮件、信息流、开发辅助工具等。</p>
-          <p><a class="btn btn-secondary" href="/others/" role="button">其他进阶库 &raquo;</a></p>
         </div>
       </div>
     </div> <!-- /container -->

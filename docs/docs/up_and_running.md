@@ -1,6 +1,6 @@
 ## 安装 requirements.txt 中的第三方库
 
-因为这个教程用到了挺多东西，但都非常容易在本地下载了跑起来，首先是数据库用的是 PostgreSQL，任务队列用到了 Redis，其他的话可能 requirements.txt 中的某些库在不同环境下可能会出现问题，在 macOS 上使用 Python3 都能安装成功，我就不在这里详细写了。
+因为这个教程用到了挺多东西，但都非常容易在本地下载了跑起来，首先是数据库用的是 PostgreSQL，任务队列用到了 Redis，其他的话可能 requirements.txt 中的某些库在不同环境下可能会出现问题，在 macOS 上使用 Python3 都能安装成功，我就不在这里详细写了，全部安装完成后需要有两个 GUI 客户端方便看数据库，PostgreSQL 我用的是 [Postico](https://eggerapps.at/postico/)，Redis 用的是 [Medis](http://getmedis.com/)。
 
 ```shell
 # clone code and install pip packages

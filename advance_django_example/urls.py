@@ -20,17 +20,25 @@ from django.conf.urls.static import static
 from django.conf.urls import handler404, handler500
 from . import views
 
+from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+
+router = routers.DefaultRouter()
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('user.urls')),
+    url(r'^captcha/', include('captcha.urls')),
     url(r'^', include('article.urls')),
     url(r'^$', views.index, name='index'),
     url(r'^apps/', views.apps, name='apps'),
-    url(r'^captcha/', include('captcha.urls')),
-    url(r'^faq/', views.faq, name='faq'),
-    url(r'^subscribe/', views.subscribe, name='subscribe'),
     url(r'^maintenance/', views.maintenance, name='maintenance'),
+    # rest_framework urls
+    url(r'^', include(router.urls)),
+    url(r'^api/v1/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/v1/api-token-auth/', obtain_jwt_token),
+    url(r'^api/v1/api-token-refresh/', refresh_jwt_token),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

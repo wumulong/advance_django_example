@@ -19,15 +19,26 @@ extra:
   social:
     - type: 'github'
       link: 'https://github.com/lsdlab'
-    - type: 'twitter'
-      link: 'https://twitter.com/lsdvincent'
+  palette:
+    primary: 'light blue'
+    accent: 'pink'
+  font:
+    text: 'Source Sans Pro'
+    code: 'Source Code Pro'
+
 
 
 # Extensions
 markdown_extensions:
   - admonition
   - codehilite(guess_lang=false)
+  - footnotes
+  - meta
   - toc(permalink=true)
+  - pymdownx.critic
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.tasklist(custom_checkbox=true)
 
 # Pages
 pages:
@@ -37,12 +48,13 @@ pages:
     - 第二章 - 另一个任务队列 django-rq: chapter2.md
     - 第三章 - 简单定时任务 django-crontab: chapter3.md
     - 第四章 - 复杂搜索 django-elasticsearch: chapter4.md
-    - 第五章 - RESTFul API: chapter5.md
-    - 第六章 - 本地开发辅助 django-debug-toolbar 和 django-extensions: chapter6.md
+    - 第五章 - 用户模块 App 的视图实现及 RESTFul API 实现: chapter5.md
+    - 第六章 - 用户模块 App 的GraphQL 实现: chapter6.md
     - 第七章 - 打标签 django-taggit: chapter7.md
     - 第八章 - 信息流 django-activity-stream: chapter8.md
-    - 第九章 - 前端结合 Webpack django-webpack-loader: chapter9.md
-    - 第十章 - 接入 Sentry: chapter10.md
-    - 第十一章 - 部署: chapter11.md
-    - 第十二章 - 实战应用: chapter12.md
+    - 第九章 - 验证码和图片处理 django-simple-captcha and django-imagekit: chapter9.md
+    - 第十章 - 本地开发辅助 django-debug-toolbar 和 django-extensions: chapter10.md
+    - 第十一章 - 前端结合 Webpack django-webpack-loader: chapter11.md
+    - 第十二章 - 接入 Sentry: chapter12.md
+    - 第十三章 - 部署及 API Benchmark: chapter13.md
 

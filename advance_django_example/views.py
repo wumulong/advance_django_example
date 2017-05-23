@@ -5,14 +5,10 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'static_page/index.html', {'title': 'index'})
 
+
 def apps(request):
     return render(request, 'static_page/apps.html', {'title': 'apps'})
 
-def faq(request):
-    if request.method == 'GET':
-        return render(request, 'static_page/faq.html', {'title': 'faq'})
-    else:
-        pass
 
 def subscribe(request):
     if request.method == 'GET':

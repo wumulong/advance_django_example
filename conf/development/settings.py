@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'captcha',
     'imagekit',
     'taggit',
+    'taggit_serializer',
     'rest_framework',
     'django_extensions',
     'debug_toolbar',
@@ -59,14 +60,14 @@ INSTALLED_APPS = [
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    ),
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework.authentication.SessionAuthentication',
+    #     'rest_framework.authentication.BasicAuthentication',
+    #     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    # ),
     'PAGE_SIZE': 200
 }
 
@@ -256,3 +257,6 @@ CACHES = {
 }
 
 REDIS_TIMEOUT = 24 * 60 * 60
+
+
+# https://api.unsplash.com/photos/random/?client_id=24a386a24e51631bdc22e173a3d5ee98f4ecd5aaabac5be7e4fcf08d0bdae164&count=1
