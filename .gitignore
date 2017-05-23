@@ -92,5 +92,6 @@ target/
 
 conf/production/
 media/
-logs
+logs/
+site/
 
