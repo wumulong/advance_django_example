@@ -1,3 +1,5 @@
+这个文档包含了这个项目的常见问题。
+
 # 进阶 Django 教程
 
 ![Language](https://img.shields.io/badge/language-Python-blue.svg?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)

@@ -1,0 +1,57 @@
+{% extends "partials/base.html" %}
+{% load custom_markdown %}
+{% load custom_mistune %}
+
+{% block pagetilte %}
+  <title>FAQ</title>
+{% endblock %}
+
+{% load static %}
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="blog-header" style="text-align: center" hidden="">
+    <div class="container">
+      <h1 class="blog-title">The Bootstrap Blog</h1>
+      <p class="lead blog-description">An example blog template built with Bootstrap.</p>
+    </div>
+  </div>
+
+  <div class="container mt20">
+
+    <div class="row justify-content-center">
+
+      <div class="col-lg-8 blog-main">
+
+        <div class="blog-post yue">
+          <h2 class="blog-post-title">Sample blog post</h2>
+          <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+
+          {{ md | custom_mistune }}
+        </div><!-- /.blog-post -->
+
+        <nav class="blog-pagination" style="text-align: center">
+          <a class="btn btn-outline-primary" href="#">Older</a>
+          <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+        </nav>
+
+      </div>
+
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+
+{% endblock %}
+
+
+{% block pagejs %}
+  <script>
+    NProgress.start()
+
+    NProgress.done()
+  </script>
+{% endblock %}
+

@@ -52,7 +52,7 @@ pages:
     - 第八章 - 信息流 django-activity-stream: chapter8.md
     - 第九章 - 验证码和图片处理 django-simple-captcha and django-imagekit: chapter9.md
     - 第十章 - 本地开发辅助 django-debug-toolbar 和 django-extensions: chapter10.md
-    - 第十一章 - 前端结合 Webpack django-webpack-loader: chapter11.md
+    - 第十一章 - 前端结合 django-turbolinks 和 Webpack django-webpack-loader : chapter11.md
     - 第十二章 - 接入 Sentry: chapter12.md
     - 第十三章 - 部署及 API Benchmark: chapter13.md
 

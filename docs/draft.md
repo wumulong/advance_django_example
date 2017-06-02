@@ -34,7 +34,10 @@ pip install git+https://github.com/maethor/avatar-generator.git
 * 接入 sentry
 
 
+
+
 ## celery result backend and custom scheduler
+
 ```
 python manage.py migrate django_celery_results
 
@@ -47,7 +50,9 @@ python manage.py migrate django_celery_beat
 ```
 
 
+
 ## celery worker and beat
+
 ```
 redisstart
 celery -A advance_django_example  worker --loglevel=info
@@ -55,9 +60,19 @@ celery -A advance_django_example  beat --loglevel=info
 ```
 
 
+
 ## flower
+
 ```
 flower -A advance_django_example --basic_auth=lsdvincent:1234
 ```
 
 
+
+## django-turbolinks
+
+1. `pip install django-turbolinks`
+2. Add `turbolinks.middleware.TurbolinksMiddleware` after`django.contrib.sessions.middleware.SessionMiddleware` to your `MIDDLEWARE_CLASSES` setting.
+3. Add `turbolinks` to your `INSTALLED_APPS` setting.
+4. Run `./manage.py collectstatic`
+5. Include `/static/turbolinks/turbolinks.js` script in your base template.

@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+import raven
+
+RAVEN_CONFIG = {
+    'dsn': 'https://f7d51b943b774ac8b1673d3fb64e35f0:5e9d1b3d3c0e40b3b8aa9c5527a66aa1@sentry.io/171452',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+}
+
 from os.path import join, dirname
 from dotenv import load_dotenv
 
@@ -56,6 +65,8 @@ INSTALLED_APPS = [
     'django_rq',
     'django_celery_beat',
     'django_celery_results',
+    'turbolinks',
+    'raven.contrib.django.raven_compat',
 ]
 
 
@@ -75,6 +86,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'turbolinks.middleware.TurbolinksMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -184,7 +196,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = 'static/'
+STATIC_ROOT = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
@@ -201,11 +213,19 @@ LOGIN_URL = '/login/'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
     'handlers': {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, "logs", 'advance_django_example.log'),
+            'filename': os.path.join(BASE_DIR, "logs", 'development.log'),
         },
     },
     'loggers': {

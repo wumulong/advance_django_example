@@ -14,10 +14,6 @@ django-taggit==0.22.1
 django-filter==1.0.2
 django-tables2==1.6.1
 django-activity-stream==0.6.3
-# API
-djangorestframework==3.6.2
-djangorestframework-jwt==1.10.0
-django-ratelimit==1.0.1
 # job queues and job scheduling
 celery==4.0.2
 django-celery-beat==1.0.1
@@ -25,6 +21,17 @@ django-celery-results==1.0.1
 flower==0.9.1
 django-rq==0.9.5
 django-crontab==0.7.1
+# API
+djangorestframework==3.6.2
+djangorestframework-jwt==1.10.0
+django-ratelimit==1.0.1
+# Frontend
+django-turbolinks==0.5.1
+django-webpack-loader==0.5.0
+
+# sentry raven
+raven==6.0.0
+
 
 # utils
 requests==2.13.0

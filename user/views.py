@@ -1,12 +1,11 @@
 import logging
 from django.http import HttpResponseRedirect
-from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from user.forms import SignupForm, AvatarForm
+from user.forms import SignupForm
 from user.models import User
 
 from rest_framework.decorators import api_view
@@ -35,7 +34,8 @@ def login_view(request):
 
         user = get_user(email)
         if user:
-            authenticate_user = authenticate(username=user.username, password=password)
+            authenticate_user = authenticate(
+                username=user.username, password=password)
         else:
             messages.warning(request, '无此用户，请注册使用！')
             return HttpResponseRedirect('/signup/')
@@ -55,7 +55,6 @@ def signup_view(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/')
 
-    registered = False
     if request.method == 'POST':
         username = get_user(request.POST.get('email'))
         if username:
@@ -68,7 +67,6 @@ def signup_view(request):
                 user.set_password(user.password)
                 user.client_mark = 'web'
                 user.save()
-                registered = True
                 login(request, user)
                 messages.success(request, '注册成功！')
                 return HttpResponseRedirect('/')
@@ -120,7 +118,7 @@ def password_edit_view(request):
     user = get_user(request.user.email)
     check_result = user.check_password(request.POST.get('old-password'))
 
-    if check_result == True:
+    if check_result:
         new_password = request.POST.get('password')
         confirm_new_password = request.POST.get('confirmPassword')
 
@@ -173,41 +171,24 @@ def users(request):
 
 @api_view(['GET'])
 def user_detail(request, pk):
-    try:
-        user_detail = User.objects.get(id=pk)
-    except ObjectDoesNotExist as e:
-        user_detail = None
-        logger.error(' ============ ObjectDoesNotExist ============')
-        logger.error(e)
-    if not user_detail:
-        user_detail = User.objects.none()
-    else:
-        if request.method == 'POST':
-            user_detail.nickname = request.POST.get('nickname')
-            user_detail.bio = request.POST.get('bio')
-            user_detail.url = request.POST.get('url')
-            user_detail.location = request.POST.get('location')
-            user_detail.save()
-    serializer = UserSerializer(user_detail)
-    serializer_data = serializer.data
-    return Response(serializer_data)
-
-
-@api_view(['GET'])
-def check_user(request, nickname):
     if request.method == 'GET':
         try:
-            pass
+            user_detail = User.objects.get(id=pk)
         except ObjectDoesNotExist as e:
+            user_detail = None
             logger.error(' ============ ObjectDoesNotExist ============')
             logger.error(e)
-        else:
-            pass
-        finally:
-            pass
-        user_detail = User.objects.get(nickname=nickname)
         if not user_detail:
-            return JsonResponse({})
+            user_detail = User.objects.none()
         else:
-            serializer = UserSerializer(user_detail[0])
-            return Response(serializer.data)
+            if request.method == 'POST':
+                user_detail.nickname = request.POST.get('nickname')
+                user_detail.bio = request.POST.get('bio')
+                user_detail.url = request.POST.get('url')
+                user_detail.location = request.POST.get('location')
+                user_detail.save()
+        serializer = UserSerializer(user_detail)
+        serializer_data = serializer.data
+        return Response(serializer_data)
+    elif request.method == 'POST':
+        pass

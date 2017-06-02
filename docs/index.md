@@ -18,4 +18,46 @@
 
 
 
-比如任务队列，定时任务，任务队列将介绍两个库的使用，一个是功能比较多的 [Celery](http://docs.celeryproject.org/en/latest/index.html)，另一个是功能较为简单的 [django-rq](https://github.com/ui/django-rq)，Celery 提供了非常易用的 API 来实现任务队列和定时任务，用 django-rq 实现定时任务则需要手动实现定时入队这一过程，当然如果你只需要简单的定时任务的话 [django-corntab](https://github.com/kraiz/django-crontab) 也是一个非常好的选择。图片处理也是 Web 开发中很常见的需求，用户上传的头像、图片可能很大，需要裁剪，需要处理成大中小尺寸和略缩图来保存，以方便不同页面的展示。还有 API，Django 有一个非常方便使用的 RESTFul API 库，叫做 [Django REST framework](http://www.django-rest-framework.org)，只要定义好 model，serializer，在根据业务写好视图层的代码，加上 [Django REST framework JWT](http://getblimp.github.io/django-rest-framework-jwt/) 作为 API token 保护，就能提供一个完整的 API 后端服务。示例代码中也包含了一个简单的用户应用（登录注册）的视图层和 API 层实现，包含了基本的功能，登录注册、修改资料、修改密码、删除账户，全部提供了 RESTFul API 实现，另外也包含了这个用户 App 的 GraphQL 实现。ElasticSearch 也是一个在 Web 应用中经常使用的东西，一个搜索引擎后端，被用来索引复杂数据，如商品属性数据，或者用来处理大量日志，教程中也包含了如何在 Django 中使用 [django-elasticsearch](https://github.com/liberation/django-elasticsearch) 这个库的示例。
+详细的目录在项目中的 GitHub Pages 能看到，GitHub Pages 是用的 [MkDocs](http://mkdocs.org) 生成的，用了一个 Material Design 的主题，字体是 Souce Sans Pro 和 Source Code Pro，还挺好看，可读性也不错，目录、TOC 都有，还有 GFM 的语法，想直接读阅读 GitHub 渲染的 md 文件可以直接到 `docs` 目录打开文件。README 中我就不放目录了，简单介绍下这个教程中涉及到了那些内容，有那些示例。
+
+
+
+## 任务队列/定时任务
+
+任务队列将介绍两个库的使用，一个是功能比较多的 [Celery](http://docs.celeryproject.org/en/latest/index.html)，另一个是功能较为简单的 [django-rq](https://github.com/ui/django-rq)，Celery 提供了非常易用的 API 来实现任务队列和定时任务，用 django-rq 实现定时任务则需要手动实现定时入队这一过程，当然如果你只需要简单的定时任务的话 [django-corntab](https://github.com/kraiz/django-crontab) 也是一个非常好的选择。
+
+
+
+## 搜索
+
+ElasticSearch 也是一个在 Web 应用中经常使用的东西，一个搜索引擎后端，被用来索引复杂数据，如商品属性数据，或者用来处理大量日志，教程中也包含了如何在 Django 中使用 [django-elasticsearch](https://github.com/liberation/django-elasticsearch) 这个库的示例。
+
+
+
+## API
+
+Django 有一个非常方便使用的 RESTFul API 库，叫做 [Django REST framework](http://www.django-rest-framework.org)，只要定义好 model，serializer，在根据业务写好视图层的代码，加上 [Django REST framework JWT](http://getblimp.github.io/django-rest-framework-jwt/) 作为 API token 保护，就能提供一个完整的 API 后端服务。示例代码中也包含了一个简单的用户应用（登录注册）的视图层和 API 层实现，包含了基本的功能，登录注册、修改资料、修改密码、删除账户，全部提供了 RESTFul API 实现，另外也包含了这个用户 App 的 GraphQL 实现。
+
+
+
+## 图片处理
+
+图片处理也是 Web 开发中很常见的需求，用户上传的头像、图片可能很大，需要裁剪，需要处理成大中小尺寸和略缩图来保存，以方便不同页面的展示。教程中包含了简单用户注册是给表单添加一个验证码，防止应用被恶意爬虫盯上进行垃圾用户注册，也简单介绍了用 django-imagekit 进行图片处理。
+
+
+
+## 本地开发辅助
+
+介绍了两个本地开发辅助工具：django-debug-toolbar 和 django-extensions，django-debug-toolbar 能在本地测试的时候页面右侧有个可隐藏的面板，看到一些调试信息，应用变量、SQL 执行时间、模板文件、运行时间等等。django-extensions 给 Django 应用的 manage.py 添加了命令，比如查看应用的全部 URL 和对于的方法，可视化应用的 model，验证模板等等。
+
+
+
+## 前端结合
+
+前端结合介绍了一个非常神奇的包，让 Django 应用也能获得非常接近单页应用的用户体验，来自 Rails 社区的 [Turbolinks](https://github.com/turbolinks/turbolinks)，有人根据 Django 的 middleware 原理开发了适合 Django 的包，非常容易接入，就能让 Django 应用使用体验大变样。还介绍了一个 Django 结合 Webpack 的工具，Webpack 是现在前端最流行的打包工具，用来打包全部前端内容，CSS/JS/字体/图片，我也使用过 Django 的一些前端辅助工具，就是把全部 JS 和 CSS 拼接成一个文件然后 minifier，JS 还要在 uglify 混淆，其实都不太好用，还不如我自己写个 gulpfile。
+
+
+
+## 接入 Sentry 和部署问题
+
+最后介绍了如何接入 Sentry，Python 这样的动态语言，没有类型，要在运行时才会报错，很难在最开始就把代码中的异常处理都考虑到，所以就需要 Sentry 这样的捕获工具。作为一个『全干』工程师，部署应用，服务器 trouble shotting 也是一项必须掌握的技能。其实 Django 非常容易部署，只要选对了发行版，我对比下来用 Ubunt 是最方便的，环境问题最少，熟练的话从启动服务器到完成二十分钟就能搞定。

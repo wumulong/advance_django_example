@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django_rq',
     'django_celery_beat',
     'django_celery_results',
+    'turbolinks',
 ]
 
 
@@ -75,6 +76,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'turbolinks.middleware.TurbolinksMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

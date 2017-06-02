@@ -39,6 +39,7 @@ urlpatterns = [
     url(r'^api/v1/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1/api-token-auth/', obtain_jwt_token),
     url(r'^api/v1/api-token-refresh/', refresh_jwt_token),
+    url(r'^api/v1/all_api/', views.all_api, name='all_api'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

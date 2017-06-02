@@ -1,4 +1,6 @@
+import os
 from django.shortcuts import render
+from django.conf import settings
 
 # Create your views here.
 # HTML views
@@ -8,6 +10,13 @@ def index(request):
 
 def apps(request):
     return render(request, 'static_page/apps.html', {'title': 'apps'})
+
+
+def faq(request):
+    faq_md_file = os.path.join(settings.BASE_DIR, 'docs', 'faq.md')
+    with open(faq_md_file) as f:
+        md = f.read()
+        return render(request, 'static_page/faq.html', {'title': 'faq', 'md': md})
 
 
 def subscribe(request):
@@ -33,3 +42,7 @@ def maintenance(request):
         return render(request, 'static_page/maintenance.html', {'title': 'maintenance'})
     else:
         pass
+
+
+def all_api(request):
+    pass
