@@ -25,7 +25,6 @@ from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 router = routers.DefaultRouter()
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('user.urls')),
@@ -36,16 +35,15 @@ urlpatterns = [
     url(r'^maintenance/', views.maintenance, name='maintenance'),
     # rest_framework urls
     url(r'^', include(router.urls)),
-    url(r'^api/v1/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/v1/', include(
+        'rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1/api-token-auth/', obtain_jwt_token),
     url(r'^api/v1/api-token-refresh/', refresh_jwt_token),
-    url(r'^api/v1/all_api/', views.all_api, name='all_api'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+] + static(
+    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = views.page_not_found
 handler500 = views.server_error
-
 
 if settings.DEBUG:
     import debug_toolbar

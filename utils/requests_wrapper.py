@@ -24,7 +24,7 @@ def requests_get(protocal, host, port, url, headers={}, params={}):
     return reqeusts_result
 
 
-def requests_post(protocal, host, port, url, headers={}, json021={}):
+def requests_post(protocal, host, port, url, headers={}, json={}):
     reqeusts_result = {}
     if port:
         requests_url = '{0}://{1}:{2}{3}'.format(protocal, host, port, url)
@@ -43,7 +43,5 @@ def requests_post(protocal, host, port, url, headers={}, json021={}):
             reqeusts_result['errors'] = json_result['errors']
         else:
             reqeusts_result['errors'] = e
-
-    return reqeusts_result
 
     return reqeusts_result

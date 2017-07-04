@@ -1,18 +1,13 @@
 # Django
-Django==1.11
+Django==1.11.2
 # auth middleware
 django-simple-captcha==0.5.5
 # image processing
 django-imagekit==4.0
-# debug-toolbar
-django-debug-toolbar==1.7
-# custom management extensions
-django-extensions==1.7.8
 # redis tags filter tables activity stream lib
 django-redis==4.7.0
 django-taggit==0.22.1
 django-filter==1.0.2
-django-tables2==1.6.1
 django-activity-stream==0.6.3
 # job queues and job scheduling
 celery==4.0.2
@@ -28,13 +23,15 @@ django-ratelimit==1.0.1
 # Frontend
 django-turbolinks==0.5.1
 django-webpack-loader==0.5.0
-
 # sentry raven
 raven==6.0.0
-
+# debug-toolbar
+django-debug-toolbar==1.7
+# custom management extensions
+django-extensions==1.7.8
 
 # utils
-requests==2.13.0
+requests==2.18.1
 simplejson==3.10.0
 jinja2==2.9.6
 mistune==0.7.4
@@ -47,6 +44,9 @@ pendulum==1.2.0
 timeago==1.0.7
 
 # email party api
-django-anymail==0.9
 python-postmark==0.4.12
+django-anymail==0.9
 
+# Document tooling
+mkdocs==0.16.3
+mkdocs-material==1.6.3

@@ -42,7 +42,3 @@ def maintenance(request):
         return render(request, 'static_page/maintenance.html', {'title': 'maintenance'})
     else:
         pass
-
-
-def all_api(request):
-    pass
