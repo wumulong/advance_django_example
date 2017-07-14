@@ -55,4 +55,5 @@ pages:
     - 第十一章 - 前端结合 django-turbolinks 和 Webpack django-webpack-loader : chapter11.md
     - 第十二章 - 接入 Sentry: chapter12.md
     - 第十三章 - 部署及 API Benchmark: chapter13.md
+    - 草稿: draft.md
 
