@@ -1,5 +1,5 @@
-site_name: 'Django 进阶教程'
-site_description: 'Django 进阶教程'
+site_name: '进阶 Django 教程'
+site_description: '进阶 Django 教程'
 site_author: '陈坚'
 # site_url: 'https://advance_django_example.com'
 theme: material

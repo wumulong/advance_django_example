@@ -1,4 +1,4 @@
-# 进阶 Django 教程
+# Django 进阶教程
 
 ![Language](https://img.shields.io/badge/language-Python-blue.svg?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
 

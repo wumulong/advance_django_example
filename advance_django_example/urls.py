@@ -27,9 +27,9 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('user.urls')),
+    url(r'^', include('apps.user.urls')),
     url(r'^captcha/', include('captcha.urls')),
-    url(r'^', include('article.urls')),
+    url(r'^', include('apps.article.urls')),
     url(r'^$', views.index, name='index'),
     url(r'^apps/', views.apps, name='apps'),
     url(r'^maintenance/', views.maintenance, name='maintenance'),

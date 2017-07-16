@@ -6,12 +6,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from user.forms import SignupForm
-from user.models import User
+from .forms import SignupForm
+from .models import User
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from user.serializers import UserSerializer
+from .serializers import UserSerializer
 
 logger = logging.getLogger(__name__)
 

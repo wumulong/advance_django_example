@@ -21,7 +21,6 @@ load_dotenv(dotenv_path)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -44,8 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'article',
-    'user',
+    'apps.article',
+    'apps.user',
     'captcha',
     'imagekit',
     'taggit',
@@ -57,20 +56,20 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'django_celery_results',
     'turbolinks',
-    'raven.contrib.django.raven_compat',
+    # 'raven.contrib.django.raven_compat',
 ]
 
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ),
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework.authentication.SessionAuthentication',
-    #     'rest_framework.authentication.BasicAuthentication',
-    #     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    # ),
-    'PAGE_SIZE': 200
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+    'PAGE_SIZE': 20
 }
 
 
@@ -110,7 +109,7 @@ ROOT_URLCONF = 'advance_django_example.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'apps', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -179,14 +178,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'apps', "static/")
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'apps', "static"),
 ]
 
 MEDIA_ROOT = 'media/'
-MEDIA_URL = '/media/'
+MEDIA_URL = os.path.join(BASE_DIR, 'apps', "media/")
 
 AUTH_USER_MODEL = 'user.User'
 LOGIN_REDIRECT_URL = '/'
