@@ -41,6 +41,7 @@ markdown_extensions:
 # Pages
 pages:
     - README.md: index.md
+    - Structure: structure.md
     - up & running: up_and_running.md
     - 第一章 - 任务队列 Celery: chapter1.md
     - 第二章 - 另一个任务队列 django-rq: chapter2.md
