@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+import raven
+
+RAVEN_CONFIG = {
+    'dsn': 'https://f7d51b943b774ac8b1673d3fb64e35f0:5e9d1b3d3c0e40b3b8aa9c5527a66aa1@sentry.io/171452',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+}
+
 from os.path import join, dirname
 from dotenv import load_dotenv
 
@@ -21,6 +30,7 @@ load_dotenv(dotenv_path)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -28,9 +38,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [*]
 
 
 # Application definition
@@ -50,13 +60,13 @@ INSTALLED_APPS = [
     'taggit',
     'taggit_serializer',
     'rest_framework',
-    'django_extensions',
-    'debug_toolbar',
+    # 'django_extensions',
+    # 'debug_toolbar',
     'django_rq',
     'django_celery_beat',
     'django_celery_results',
     'turbolinks',
-    # 'raven.contrib.django.raven_compat',
+    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +78,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'advance_django_example.urls'
@@ -90,6 +99,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'advance_django_example.wsgi.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -144,11 +154,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'apps', "static/")
+STATIC_ROOT = os.path.join(BASE_DIR, 'apps', "static/")
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'apps', "static"),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'apps', "static"),
+# ]
 
 MEDIA_ROOT = 'media/'
 MEDIA_URL = os.path.join(BASE_DIR, 'apps', "media/")
@@ -161,19 +171,11 @@ LOGIN_URL = '/login/'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
-    },
     'handlers': {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs', 'development.log'),
+            'filename': os.path.join(BASE_DIR, 'logs', 'advance_django_example.log'),
         },
     },
     'loggers': {
@@ -201,23 +203,6 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {'JWT_VERIFY_EXPIRATION': False}
 
-# debug_toolbar settings
-DEBUG_TOOLBAR_PANELS = [
-    'debug_toolbar.panels.versions.VersionsPanel',
-    'debug_toolbar.panels.timer.TimerPanel',
-    'debug_toolbar.panels.settings.SettingsPanel',
-    'debug_toolbar.panels.headers.HeadersPanel',
-    'debug_toolbar.panels.request.RequestPanel',
-    'debug_toolbar.panels.sql.SQLPanel',
-    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-    'debug_toolbar.panels.templates.TemplatesPanel',
-    'debug_toolbar.panels.cache.CachePanel',
-    'debug_toolbar.panels.signals.SignalsPanel',
-    'debug_toolbar.panels.logging.LoggingPanel',
-    'debug_toolbar.panels.redirects.RedirectsPanel',
-]
-INTERNAL_IPS = ('127.0.0.1')
-DEBUG_TOOLBAR_CONFIG = {  'JQUERY_URL' : r"http://code.jquery.com/jquery-2.1.1.min.js"}
 
 # celery settings
 BROKER_URL = os.environ.get("REDIS_URL")
@@ -258,6 +243,3 @@ CACHES = {
 }
 
 REDIS_TIMEOUT = 24 * 60 * 60
-
-
-# https://api.unsplash.com/photos/random/?client_id=24a386a24e51631bdc22e173a3d5ee98f4ecd5aaabac5be7e4fcf08d0bdae164&count=1

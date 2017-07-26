@@ -90,7 +90,9 @@ docs/_build/
 target/
 
 
-conf/production/
-media/
+conf/production/.env
+apps/media/
 logs/
 site/
+/huey.db
+/celerybeat-schedule
