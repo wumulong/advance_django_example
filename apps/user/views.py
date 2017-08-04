@@ -128,6 +128,7 @@ def password_edit_view(request):
             return HttpResponseRedirect('/user/profile/')
         else:
             user.set_password(new_password)
+            user.save()
             logout(request)
             messages.success(request, '密码修改成功，请重新登录')
             return HttpResponseRedirect('/login/')
