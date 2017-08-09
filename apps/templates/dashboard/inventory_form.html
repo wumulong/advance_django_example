@@ -1,0 +1,54 @@
+{% csrf_token %}
+<div class="form-group row">
+  <label for="name" class="col-2 col-form-label">名称</label>
+  <div class="col-10">
+    <input class="form-control" type="text" name='name' value="{{ inventory.name }}" id="name"  autofocus="true">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="ip" class="col-2 col-form-label">IP</label>
+  <div class="col-10">
+    <input class="form-control" type="text" name='ip' value="{{ inventory.ip }}" id="ip">
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="regions" class="col-2 col-form-label">地区</label>
+  <div class="col-10">
+    <input class="form-control" type="text" name='regions' value="{{ inventory.regions }}" id="regions">
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="tags" class="col-2 col-form-label">标签</label>
+  <div class="col-10">
+    <input class="form-control" type="text" value="{{ inventory.tags.all|join:"," }}" name='tags' id='tags' data-role="tagsinput">
+  </div>
+</div>
+
+{% if not request.resolver_match.kwargs %}
+<div class="form-group row">
+  <label for="root_password" class="col-2 col-form-label">root 密码</label>
+  <div class="col-10">
+    <input class="form-control" type="password" value="{{ inventory.root_password }}" name='root_password' id='root_password'>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="ssh_port" class="col-2 col-form-label">SSH 端口</label>
+  <div class="col-10">
+    <input class="form-control" type="text" value="{{ inventory.ssh_port }}" name='ssh_port' id='ssh_port'>
+  </div>
+</div>
+{% endif %}
+
+
+<div class="form-group row">
+  <label for="button" class="col-2 col-form-label"></label>
+  <div class="col-10">
+    <button type="submit" class="btn btn btn-primary"><i class="fa fa-pencil"></i>&nbsp
+      保存
+    </button>
+    <input type="hidden" name="submit" value="submit" />
+  </div>
+</div>

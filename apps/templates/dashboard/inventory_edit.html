@@ -1,0 +1,30 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+    oops | 资产详情
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt30" style="margin-bottom: 240px">
+
+  <h2 style="float: left">编辑资产</h2>
+  <div class="pt50">
+    <form class="offset-md-2 col-md-10" action="/inventory/{{ inventory.id }}/" method="post">
+      {% include "dashboard/inventory_form.html" %}
+    </form>
+  </div>
+</div>
+
+{% endblock content %}
+
+
+{% block pagejs %}
+<script>
+  $("#tags").tagsinput()
+  $("#tags").on('itemRemoved', function(event) {
+    $('#tags').attr('value', $('#tags').val())
+  });
+</script>
+{% endblock %}
+

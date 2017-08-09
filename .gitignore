@@ -91,7 +91,7 @@ target/
 
 
 conf/production/.env
-apps/media/
+apps/media/*
 logs/
 site/
 /huey.db

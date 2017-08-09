@@ -1,0 +1,62 @@
+{% extends "partials/base.html" %}
+
+{% block pagetilte %}
+  <title>小工具</title>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              实用工具
+            </div>
+            <div class="card-block">
+              <h3 class="card-title">图床</h3>
+              <p class="card-text">个人图床服务，提供下载链接或者直接引用链接。</p>
+              <a href="/tools/picture/" class="btn btn-primary">图床</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              实用工具
+            </div>
+            <div class="card-block">
+              <h3 class="card-title">URL Shorten</h3>
+              <p class="card-text">长链接缩短服务。</p>
+              <a href="/tools/url_shorten/" class="btn btn-primary">URL Shorten</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mt30">
+          <div class="card">
+            <div class="card-header">
+              实用工具
+            </div>
+            <div class="card-block">
+              <h3 class="card-title">GitHub Star</h3>
+              <p class="card-text">GitHub Star 管理，备注那些开源项目已经学习过或者参与过。</p>
+              <a href="/tools/github_star" class="btn btn-primary">GitHub Star</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+{% block pagejs %}
+  <script>
+
+  </script>
+{% endblock %}
+

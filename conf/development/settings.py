@@ -143,14 +143,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = os.path.join(BASE_DIR, 'apps', "static/")
 # STATIC_ROOT = os.path.join(BASE_DIR, 'apps', "static/")
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'apps', "static"),
 ]
 
-MEDIA_ROOT = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'apps', "media/")
 MEDIA_URL = os.path.join(BASE_DIR, 'apps', "media/")
 
 AUTH_USER_MODEL = 'user.User'
@@ -195,11 +195,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
-    'DATETIME_FORMAT': "%Y-%m-%d",
+    'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
     'PAGE_SIZE': 20
 }
 
 JWT_AUTH = {'JWT_VERIFY_EXPIRATION': False}
+
 
 # debug_toolbar settings
 DEBUG_TOOLBAR_PANELS = [

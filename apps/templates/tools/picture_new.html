@@ -1,0 +1,111 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}
+    上传图片
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt30" style="margin-bottom: 240px">
+
+  <h2 style="float: left">上传图片</h2>
+  <div class="pt50">
+    <form action="/tools/picture/upload/" class="dropzone dz-clickable" id="tools_picture_upload">
+      {% csrf_token %}
+      <div class="dz-default dz-message"><span>拖拽图片上传</span></div>
+    </form>
+  </div>
+</div>
+{% endblock content %}
+
+
+{% block pagejs %}
+<script>
+
+  Dropzone.autoDiscover = false;
+  Dropzone.options.toolsPictureUpload = {
+    // uploadMultiple: true,
+    paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 10, // MB
+    acceptedFiles: "image/*",
+    dictDefaultMessage: '拖拽文件上传',
+    dictFileTooBig: "图片过大 ({{filesize}} MiB)，最大 {{maxFilesize}} MiB.",
+    dictInvalidFileType: '只能上传图片',
+    dictResponseError: '服务器返回 {{statusCode}}.',
+    dictCancelUpload: '取消上传',
+    dictCancelUploadConfirmation: '确定取消上传？',
+    dictRemoveFile: '删除文件',
+    init: function() {
+      this.on("success", function(file) {
+        var response_text = JSON.parse(file.xhr.response)['msg']
+        var markdown_link = JSON.parse(file.xhr.response)['markdown_link']
+        var view_link = JSON.parse(file.xhr.response)['view_link']
+        var download_link = JSON.parse(file.xhr.response)['download_link']
+
+        var clipboard = new Clipboard('.btn');
+        $('.btn').tooltip({
+          trigger: 'click',
+          placement: 'bottom'
+        });
+
+        function setTooltip(btn, message) {
+          $(btn).tooltip('hide')
+            .attr('data-original-title', message)
+            .tooltip('show');
+          $(btn).tooltip({
+            trigger: 'click',
+            placement: 'bottom'
+          });
+        }
+
+        function hideTooltip(btn) {
+          setTimeout(function() {
+            $(btn).tooltip('dispose');
+          }, 500);
+        }
+        clipboard.on('success', function(e) {
+          setTooltip(e.trigger, 'Copied!');
+          hideTooltip(e.trigger);
+        });
+
+        clipboard.on('error', function(e) {
+          setTooltip(e.trigger, 'Failed!');
+          hideTooltip(e.trigger);
+        });
+
+        swal({
+          title: response_text,
+          text: markdown_link,
+          type: 'success',
+          showCloseButton: true,
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          html:
+            '<div class="input-group">' +
+            '<input type="text" class="form-control" placeholder="' + markdown_link + '" value="' + markdown_link + '">' +
+            '<span class="input-group-btn">' +
+            '<button class="btn btn-secondary" data-clipboard-text="' + markdown_link + '" type="button">Markdown</button>' +
+            '</span>' +
+            '</div>' +
+            '<div class="input-group mt10">' +
+            '<input type="text" class="form-control" placeholder="' + view_link + '" value="' + view_link + '">' +
+            '<span class="input-group-btn">' +
+            '<button class="btn btn-secondary" data-clipboard-text="' + view_link + '" type="button">查看链接</button>' +
+            '</span>' +
+            '</div>' +
+            '<div class="input-group mt10">' +
+            '<input type="text" class="form-control" placeholder="' + download_link + '" value="' + download_link + '">' +
+            '<span class="input-group-btn">' +
+            '<button class="btn btn-secondary" data-clipboard-text="' + download_link + '" type="button">下载链接</button>' +
+            '</span>' +
+            '</div>'
+        })
+      });
+    }
+  };
+  var myDropzone = new Dropzone("#tools_picture_upload", { url: "/tools/picture/upload/"});
+
+</script>
+{% endblock %}
+
+
