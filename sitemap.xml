@@ -4,7 +4,15 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/structure/</loc>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +20,7 @@
     
     <url>
      <loc>/up_and_running/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +28,7 @@
     
     <url>
      <loc>/chapter1/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +36,7 @@
     
     <url>
      <loc>/chapter2/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,7 +44,7 @@
     
     <url>
      <loc>/chapter3/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -44,7 +52,7 @@
     
     <url>
      <loc>/chapter4/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -52,7 +60,7 @@
     
     <url>
      <loc>/chapter5/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -60,7 +68,7 @@
     
     <url>
      <loc>/chapter6/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -68,7 +76,7 @@
     
     <url>
      <loc>/chapter7/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -76,7 +84,7 @@
     
     <url>
      <loc>/chapter8/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -84,7 +92,7 @@
     
     <url>
      <loc>/chapter9/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -92,7 +100,7 @@
     
     <url>
      <loc>/chapter10/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -100,7 +108,7 @@
     
     <url>
      <loc>/chapter11/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -108,7 +116,7 @@
     
     <url>
      <loc>/chapter12/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -116,7 +124,15 @@
     
     <url>
      <loc>/chapter13/</loc>
-     <lastmod>2017-05-24</lastmod>
+     <lastmod>2017-08-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/draft/</loc>
+     <lastmod>2017-08-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

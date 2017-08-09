@@ -19,7 +19,7 @@
     
     
       
-        <title>第九章 - 验证码和图片处理 django-simple-captcha and django-imagekit - 进阶 Django 教程</title>
+        <title>草稿 - 进阶 Django 教程</title>
       
     
     
@@ -80,7 +80,7 @@
             
               
             
-            第九章 - 验证码和图片处理 django-simple-captcha and django-imagekit
+            草稿
           
         </span>
       </div>
@@ -317,18 +317,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="第九章 - 验证码和图片处理 django-simple-captcha and django-imagekit" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../chapter9/" title="第九章 - 验证码和图片处理 django-simple-captcha and django-imagekit" class="md-nav__link">
       第九章 - 验证码和图片处理 django-simple-captcha and django-imagekit
     </a>
-    
   </li>
 
     
@@ -384,11 +377,95 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../draft/" title="草稿" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        草稿
+      </label>
+    
+    <a href="./" title="草稿" class="md-nav__link md-nav__link--active">
       草稿
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirementtxt" title="requirement.txt" class="md-nav__link">
+    requirement.txt
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avatar-generator-need-some-tweak" title="avatar-generator need some tweak" class="md-nav__link">
+    avatar-generator need some tweak
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_1" title="Django 常用库" class="md-nav__link">
+    Django 常用库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#celery-result-backend-and-custom-scheduler" title="celery result backend and custom scheduler" class="md-nav__link">
+    celery result backend and custom scheduler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#celery-worker-and-beat" title="celery worker and beat" class="md-nav__link">
+    celery worker and beat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flower" title="flower" class="md-nav__link">
+    flower
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django-turbolinks" title="django-turbolinks" class="md-nav__link">
+    django-turbolinks
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -406,6 +483,70 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirementtxt" title="requirement.txt" class="md-nav__link">
+    requirement.txt
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avatar-generator-need-some-tweak" title="avatar-generator need some tweak" class="md-nav__link">
+    avatar-generator need some tweak
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_1" title="Django 常用库" class="md-nav__link">
+    Django 常用库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#celery-result-backend-and-custom-scheduler" title="celery result backend and custom scheduler" class="md-nav__link">
+    celery result backend and custom scheduler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#celery-worker-and-beat" title="celery worker and beat" class="md-nav__link">
+    celery worker and beat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flower" title="flower" class="md-nav__link">
+    flower
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django-turbolinks" title="django-turbolinks" class="md-nav__link">
+    django-turbolinks
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
   
 </nav>
                   </div>
@@ -418,9 +559,69 @@
               
                 
                 
-                  <h1>第九章 - 验证码和图片处理 django-simple-captcha and django-imagekit</h1>
-                
-                
+                <h1 id="django">进阶 Django 教程<a class="headerlink" href="#django" title="Permanent link">&para;</a></h1>
+<p><img alt="Language" src="https://img.shields.io/badge/language-Python-blue.svg?style=flat-square" /> <img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" /></p>
+<h2 id="requirementtxt">requirement.txt<a class="headerlink" href="#requirementtxt" title="Permanent link">&para;</a></h2>
+<h3 id="avatar-generator-need-some-tweak">avatar-generator need some tweak<a class="headerlink" href="#avatar-generator-need-some-tweak" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/maethor/avatar-generator">avatar-generator</a></p>
+<p>pip version is broken, use git version.</p>
+<div class="codehilite"><pre><span></span>pip install git+https://github.com/maethor/avatar-generator.git
+</pre></div>
+
+
+<h2 id="django_1">Django 常用库<a class="headerlink" href="#django_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Celery 任务队列 定时任务 远程执行。每天获取 Upslash 最新图片，定时获取服务器监控信息，商品信息爬虫</li>
+<li>django-rq 另一个任务队列</li>
+<li>简单定时任务 django-crontab</li>
+<li>商品属性搜索应用 django-elasticsearch</li>
+<li>RESTful API django-restframework + JWT API 限流 django-ratelimit</li>
+<li>django-simple-captcha and django-imagekit 验证码和图片处理</li>
+<li>用户模块 API 及页面功能</li>
+<li>HTTP2 nginx Benchmark and API Benchmark</li>
+<li>本地开发辅助 debug tools: django-debug-toolbar and django-extensions</li>
+<li>django-taggit 打标签</li>
+<li>django-activity-stream 信息流</li>
+<li>
+<p>前端结合 webpack django-webpack-loader</p>
+</li>
+<li>
+<p>built-in admin panel django-flat-responsive</p>
+</li>
+<li>接入 sentry</li>
+</ul>
+<h2 id="celery-result-backend-and-custom-scheduler">celery result backend and custom scheduler<a class="headerlink" href="#celery-result-backend-and-custom-scheduler" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span>python manage.py migrate django_celery_results
+
+# redis result backend
+CELERY_RESULT_BACKEND = &#39;redis://localhost:6379/0&#39;
+# database result backend, use django-celery-results
+# CELERY_RESULT_BACKEND = &#39;django-db&#39;
+
+python manage.py migrate django_celery_beat
+</pre></div>
+
+
+<h2 id="celery-worker-and-beat">celery worker and beat<a class="headerlink" href="#celery-worker-and-beat" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span>redisstart
+celery -A advance_django_example  worker --loglevel=info
+celery -A advance_django_example  beat --loglevel=info
+</pre></div>
+
+
+<h2 id="flower">flower<a class="headerlink" href="#flower" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span>flower -A advance_django_example --basic_auth=lsdvincent:1234
+</pre></div>
+
+
+<h2 id="django-turbolinks">django-turbolinks<a class="headerlink" href="#django-turbolinks" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>pip install django-turbolinks</code></li>
+<li>Add <code>turbolinks.middleware.TurbolinksMiddleware</code> after<code>django.contrib.sessions.middleware.SessionMiddleware</code> to your <code>MIDDLEWARE_CLASSES</code> setting.</li>
+<li>Add <code>turbolinks</code> to your <code>INSTALLED_APPS</code> setting.</li>
+<li>Run <code>./manage.py collectstatic</code></li>
+<li>Include <code>/static/turbolinks/turbolinks.js</code> script in your base template.</li>
+</ol>
                 
                   
                 
@@ -439,7 +640,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../chapter8/" title="第八章 - 信息流 django-activity-stream" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../chapter13/" title="第十三章 - 部署及 API Benchmark" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -448,25 +649,11 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                第八章 - 信息流 django-activity-stream
+                第十三章 - 部署及 API Benchmark
               </span>
             </div>
           </a>
         
-        
-          <a href="../chapter10/" title="第十章 - 本地开发辅助 django-debug-toolbar 和 django-extensions" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                第十章 - 本地开发辅助 django-debug-toolbar 和 django-extensions
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
         
       </nav>
     </div>
