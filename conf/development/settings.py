@@ -43,10 +43,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.article',
+
     'apps.user',
+    'apps.article',
+    'apps.dashboard',
+    'apps.tools',
+
     'captcha',
     'imagekit',
+
     'taggit',
     'taggit_serializer',
     'rest_framework',

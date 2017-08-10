@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # from rest_framework.decorators import api_view
 # from rest_framework.response import Response
 
-from dashboard.models import Inventory
+from .models import Inventory
 # from dashboard.serializers import InventorySerializer
 
 from cryptography.fernet import Fernet

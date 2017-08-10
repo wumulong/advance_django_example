@@ -4,7 +4,7 @@ from . import views
 app_name = 'dashboard'
 urlpatterns = [
     # html view
-    url(r'^dashboard/$', views.inventory_index, name='inventory_index'),
+    url(r'^$', views.inventory_index, name='inventory_index'),
     url(r'^inventory/$', views.inventory_index, name='inventory_index'),
     url(r'^inventory/new/$', views.inventory_new, name='inventory_new'),
     url(r'^inventory/delete/(?P<pk>[0-9]+)/$', views.inventory_delete, name='inventory_delete'),

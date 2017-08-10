@@ -1,5 +1,5 @@
 from django.contrib import admin
-from dashboard.models import Inventory
+from apps.dashboard.models import Inventory
 
 
 # Register your models here.

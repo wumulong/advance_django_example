@@ -7,9 +7,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 
 
-from tools.models import Picture
+from .models import Picture
 
-from utils.utils import *
+from apps.utils.utils import *
 
 logger = logging.getLogger(__name__)
 

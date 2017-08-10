@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tools.models import Picture
+from .models import Picture
 
 
 # Register your models here.

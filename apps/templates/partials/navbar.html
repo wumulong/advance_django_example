@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+<nav class="navbar navbar-inverse bg-inverse navbar-toggleable-md">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,8 +8,25 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li {% if title == 'apps' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
-        <a href="/apps/" class="nav-link">应用</a>
+      <li {% if title == 'apps' %} class="nav-item dropdown active" {% else %} class="nav-item dropdown" {% endif %}>
+      <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">应用</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown02">
+          <a class="dropdown-item" href="/apps/">介绍</a>
+          <a class="dropdown-item" href="/blog/">博客</a>
+          <a class="dropdown-item" href="/api/">API</a>
+          <a class="dropdown-item" href="/search/">搜索</a>
+          <a class="dropdown-item" href="/job_queue/">任务队列</a>
+          <a class="dropdown-item" href="/users/">用户模块</a>
+        </div>
+      </li>
+      <li {% if title == 'tools' %} class="nav-item dropdown active" {% else %} class="nav-item dropdown" {% endif %}>
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">实用工具</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown02">
+          <a class="dropdown-item" href="/tools/dashboard/">Dashboard</a>
+          <a class="dropdown-item" href="/tools/picture/">图床</a>
+          <a class="dropdown-item" href="/tools/url_shorten/">URL Shorten</a>
+          <a class="dropdown-item" href="/tools/github_star/">GitHub Star</a>
+        </div>
       </li>
     </ul>
 
