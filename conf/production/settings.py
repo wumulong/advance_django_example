@@ -11,25 +11,23 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
+from os.path import join, dirname
+from dotenv import load_dotenv
 import raven
 
 RAVEN_CONFIG = {
-    'dsn': 'https://f7d51b943b774ac8b1673d3fb64e35f0:5e9d1b3d3c0e40b3b8aa9c5527a66aa1@sentry.io/171452',
+    'dsn': os.environ.get("RAVEN_CONFIG_DSN"),
     # If you are using git, you can also automatically configure the
     # release based on the git info.
     'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
 }
 
-from os.path import join, dirname
-from dotenv import load_dotenv
-
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+BASE_DIR = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -40,8 +38,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [*]
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -60,13 +57,17 @@ INSTALLED_APPS = [
     'taggit',
     'taggit_serializer',
     'rest_framework',
+
     # 'django_extensions',
     # 'debug_toolbar',
     'django_rq',
     'django_celery_beat',
     'django_celery_results',
     'turbolinks',
+    'anymail',
+    'analytical'
     'raven.contrib.django.raven_compat',
+    'opbeat.contrib.django',
 ]
 
 MIDDLEWARE = [
@@ -100,7 +101,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'advance_django_example.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -109,10 +109,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get("DATABASE_NAME"),
         'USER': os.environ.get("DATABASE_USER"),
-        'PASSWORD':os.environ.get("DATABASE_PASSWORD")
+        'PASSWORD': os.environ.get("DATABASE_PASSWORD")
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -149,7 +148,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
@@ -171,11 +169,20 @@ LOGIN_URL = '/login/'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format':
+            '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
     'handlers': {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs', 'advance_django_example.log'),
+            'filename': os.path.join(BASE_DIR, "logs", 'development.log'),
         },
     },
     'loggers': {
@@ -189,20 +196,19 @@ LOGGING = {
 
 # django-restframework and jwt settings
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    ),
-    'DATETIME_FORMAT': "%Y-%m-%d",
-    'PAGE_SIZE': 20
+    'DEFAULT_PERMISSION_CLASSES':
+    ('rest_framework.permissions.IsAuthenticated', ),
+    'DEFAULT_AUTHENTICATION_CLASSES':
+    ('rest_framework.authentication.SessionAuthentication',
+     'rest_framework.authentication.BasicAuthentication',
+     'rest_framework_jwt.authentication.JSONWebTokenAuthentication', ),
+    'DATETIME_FORMAT':
+    "%Y-%m-%d",
+    'PAGE_SIZE':
+    20
 }
 
 JWT_AUTH = {'JWT_VERIFY_EXPIRATION': False}
-
 
 # celery settings
 BROKER_URL = os.environ.get("REDIS_URL")
@@ -243,3 +249,21 @@ CACHES = {
 }
 
 REDIS_TIMEOUT = 24 * 60 * 60
+
+ANYMAIL = {
+    # (exact settings here depend on your ESP...)
+    "POSTMARK_SERVER_TOKEN": os.environ.get("POSTMARK_SERVER_TOKEN"),
+    "POSTMARK_SENDER_DOMAIN": os.environ.get("POSTMARK_SENDER_DOMAIN"),
+}
+EMAIL_BACKEND = "anymail.backends.postmark.EmailBackend"
+DEFAULT_FROM_EMAIL = os.environ.get("POSTMARK_SENDER_DOMAIN")
+
+# django-analytical
+GOOGLE_ANALYTICS_PROPERTY_ID = "UA-100052685-3"
+MIXPANEL_API_TOKEN = 'bf4f37caf4a74add7678941bd8321bab'
+
+OPBEAT = {
+    'ORGANIZATION_ID': 'e85f2b0cebbd47d5861af9b5b4cd856b',
+    'APP_ID': 'b38cb367ae',
+    'SECRET_TOKEN': 'e75e6d6d7fdf61cccb3bd34daeaa781bd380eec1',
+}

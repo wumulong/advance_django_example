@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
 from os.path import join, dirname
 from dotenv import load_dotenv
 
@@ -19,7 +18,8 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -32,7 +32,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,15 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'apps.user',
     'apps.article',
     'apps.dashboard',
     'apps.tools',
-
+    'apps.spendingviz',
     'captcha',
     'imagekit',
-
     'taggit',
     'taggit_serializer',
     'rest_framework',
@@ -61,7 +58,10 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'django_celery_results',
     'turbolinks',
+    'anymail',
+    # 'analytical'
     # 'raven.contrib.django.raven_compat',
+    'opbeat.contrib.django',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +74,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
 ]
 
 ROOT_URLCONF = 'advance_django_example.urls'
@@ -104,10 +105,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get("DATABASE_NAME"),
         'USER': os.environ.get("DATABASE_USER"),
-        'PASSWORD':os.environ.get("DATABASE_PASSWORD")
+        'PASSWORD': os.environ.get("DATABASE_PASSWORD")
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -136,14 +136,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -168,7 +167,8 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+            'format':
+            '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
         },
         'simple': {
             'format': '%(levelname)s %(message)s'
@@ -192,20 +192,19 @@ LOGGING = {
 
 # django-restframework and jwt settings
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    ),
-    'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
-    'PAGE_SIZE': 20
+    'DEFAULT_PERMISSION_CLASSES':
+    ('rest_framework.permissions.IsAuthenticated', ),
+    'DEFAULT_AUTHENTICATION_CLASSES':
+    ('rest_framework.authentication.SessionAuthentication',
+     'rest_framework.authentication.BasicAuthentication',
+     'rest_framework_jwt.authentication.JSONWebTokenAuthentication', ),
+    'DATETIME_FORMAT':
+    "%Y-%m-%d %H:%M:%S",
+    'PAGE_SIZE':
+    20
 }
 
 JWT_AUTH = {'JWT_VERIFY_EXPIRATION': False}
-
 
 # debug_toolbar settings
 DEBUG_TOOLBAR_PANELS = [
@@ -223,7 +222,9 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
 INTERNAL_IPS = ('127.0.0.1')
-DEBUG_TOOLBAR_CONFIG = {  'JQUERY_URL' : r"http://code.jquery.com/jquery-2.1.1.min.js"}
+DEBUG_TOOLBAR_CONFIG = {
+    'JQUERY_URL': r"http://code.jquery.com/jquery-2.1.1.min.js"
+}
 
 # celery settings
 BROKER_URL = os.environ.get("REDIS_URL")
@@ -265,5 +266,20 @@ CACHES = {
 
 REDIS_TIMEOUT = 24 * 60 * 60
 
+ANYMAIL = {
+    # (exact settings here depend on your ESP...)
+    "POSTMARK_SERVER_TOKEN": os.environ.get("POSTMARK_SERVER_TOKEN"),
+    "POSTMARK_SENDER_DOMAIN": os.environ.get("POSTMARK_SENDER_DOMAIN"),
+}
+EMAIL_BACKEND = "anymail.backends.postmark.EmailBackend"
+DEFAULT_FROM_EMAIL = os.environ.get("POSTMARK_SENDER_DOMAIN")
 
-# https://api.unsplash.com/photos/random/?client_id=24a386a24e51631bdc22e173a3d5ee98f4ecd5aaabac5be7e4fcf08d0bdae164&count=1
+# django-analytical
+# GOOGLE_ANALYTICS_PROPERTY_ID = "UA-100052685-3"
+# MIXPANEL_API_TOKEN = 'bf4f37caf4a74add7678941bd8321bab'
+
+OPBEAT = {
+    'ORGANIZATION_ID': 'e85f2b0cebbd47d5861af9b5b4cd856b',
+    'APP_ID': 'b38cb367ae',
+    'SECRET_TOKEN': 'e75e6d6d7fdf61cccb3bd34daeaa781bd380eec1',
+}

@@ -43,18 +43,23 @@ pages:
     - README.md: index.md
     - Structure: structure.md
     - up & running: up_and_running.md
-    - 第一章 - 任务队列 Celery: chapter1.md
-    - 第二章 - 另一个任务队列 django-rq: chapter2.md
-    - 第三章 - 简单定时任务 django-crontab: chapter3.md
-    - 第四章 - 复杂搜索 django-elasticsearch: chapter4.md
-    - 第五章 - 用户模块 App 的视图实现及 RESTful API 实现: chapter5.md
-    - 第六章 - 用户模块 App 的GraphQL 实现: chapter6.md
-    - 第七章 - 打标签 django-taggit: chapter7.md
-    - 第八章 - 信息流 django-activity-stream: chapter8.md
-    - 第九章 - 验证码和图片处理 django-simple-captcha and django-imagekit: chapter9.md
+    - 第一章 - 用户 App 的视图实现及 RESTful API 实现: chapter1.md
+    - 第二章 - 博客 App 的视图实现及 RESTful API 实现: chapter2.md
+    - 第三章 - 博客 App 的 GraphQL 实现: chapter3.md
+    - 第四章 - 博客 App 的 ElasticSearch 搜索: chapter4.md
+
+    - 第六章 - 信息流 django-activity-stream: chapter8.md
+    - 第七章 - 任务队列 Celery: chapter1.md
+    - 第八章 - 另一个任务队列 django-rq: chapter2.md
+    - 第九章 - 简单定时任务 django-crontab: chapter3.md
+
+    - 第五章 - 打标签 django-taggit: chapter7.md
+    - 第十章 - 验证码和图片处理 django-simple-captcha and django-imagekit: chapter9.md
     - 第十章 - 本地开发辅助 django-debug-toolbar 和 django-extensions: chapter10.md
     - 第十一章 - 前端结合 django-turbolinks 和 Webpack django-webpack-loader : chapter11.md
-    - 第十二章 - 接入 Sentry: chapter12.md
+    - 第十二章 - 接入 mailhog: chapter12.md
+    - 第十三章 - 接入 Sentry: chapter13.md
     - 第十三章 - 部署及 API Benchmark: chapter13.md
     - 草稿: draft.md
+
 
