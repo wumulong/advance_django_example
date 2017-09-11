@@ -55,8 +55,8 @@ python manage.py migrate django_celery_beat
 
 ```
 redisstart
-celery -A advance_django_example  worker --loglevel=info
-celery -A advance_django_example  beat --loglevel=info
+celery -A advance_django_example worker --loglevel=info
+celery -A advance_django_example beat --loglevel=info
 ```
 
 
